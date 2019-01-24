@@ -5,8 +5,11 @@
 a{
     text-decoration: none;  
 }
+body{
+    background: grey url(./wall.jpg) no-repeat center center;
+    background-size: cover;
+}
 kbd{
-    border: 1px solid red;
     width: 4em;
     height: 4em;
     display: inline-block;
@@ -18,19 +21,58 @@ kbd > button{
     right: 0;
     bottom: 0;
     display: none;
+    border-radius: 2px;
 }
 kbd:hover> button{
     display: inline-block;
 }
-#zhangsan > div:nth-child(2){
-    margin-left: 1em;
+#main> div:nth-child(2){
+    margin-left: -22px;
 }
-#zhangsan > div:nth-child(3){
-    margin-left: 2em;
+#main > div:nth-child(3){
+    margin-left: -80px;
+}
+#main{
+    display: inline-block;
 }
 main{
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
-#zhangsan{
+#main{
     display: inline-block;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.2)
+}
+.key{
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(to bottom, #1F2020 0%,#111111 100%);
+    color: #C5C5C5;
+    border-radius: 6px;
+    box-shadow: 0 0 0px 1px #1A1B1C, 0 0 0px 2px #1F2020, 0 3px 0 2px #080808;
+    position: relative;
+    font-size: 16px;
+    font-family: Helvetica;
+}
+.row{
+    margin: 20px;
+}
+.row .key{
+    margin: 0 10px;
+}
+.key img{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 4px;
+    bottom: 2px;
+}
+.key .text{
+    position: absolute;
+    left: 4px;
+    top: 2px;
 }

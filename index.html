@@ -2,72 +2,16 @@
 <html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/style.css" class="s">
+    <link rel="stylesheet" href="./style.css" >
+    <title>我的导航</title>
 </head>
 <body>
    <header></header>
    <main>
-       <div class="wrapper" id="zhangsan">
- </div>
+       <div class="wrapper" id="main" >
+    </div>
    </main>
    <footer></footer>
-   <script>
-      var keys = {
-    0: ['q','w','e','r','t','y','u','i','o','p'],
-    1: ['a','s','d','f','g','h','j','k','l'],
-    2: ['z','x','c','v','b','n','m'],
-    length: 3
-}
-var hash = {
-    q: 'qq.com',
-    w: 'weibo.com',
-    e: 'ele.me',
-    t: 'tianya.com',
-    y: 'youtube.com',
-    u: 'uc.com',
-    i: 'iqiyi.com',
-    o: 'opera.com',
-    s: 'sohu.com',
-    z: 'zhihu.com',
-}
-
-//取出lacalStorage中的 mamba 对应的hash
-var hashInLocalStorage = JSON.parse(localStorage.getItem('mamba') || 'null')
-if(hashInLocalStorage){
-        hash = hashInLocalStorage
-    }
-index = 0
-while(index< keys['length']){   // 0 1 2
-    div1 = document.createElement('div')
-    zhangsan.appendChild(div1)
-    row = keys[index]   //第一个数组 第二个数组 第三个数组
-    index2 = 0
-    while(index2< row['length']){    //0~9 0~8 0~6
-        z = document.createElement('kbd')
-        z.textContent = row[index2]
-        buttonX = document.createElement('button')
-        buttonX.textContent ='编辑' 
-        buttonX.id = row[index2]
-        buttonX.onclick = function(xzkjcnxlkcjlk){
-            key = xzkjcnxlkcjlk['target']['id']    //q w e r t
-            x = prompt('给我一个网址')    //qq.com
-            hash[key] = x //hash变更
-            localStorage.setItem('mamba', JSON.stringify(hash))
-        console.log(hash)
-        }
-        z.appendChild(buttonX)
-        div1.appendChild(z)
-        index2 = index2 +1
-    }
-    index = index+1
-} 
-
-document.onkeypress = function(xzkjcnxlkcjlk){
-   key = xzkjcnxlkcjlk['key']
-   website = hash[key]
-   //location.href = 'http://'+website
-   window.open('http://'+website, '_blank')
-}
-   </script>
+   <script src="./main.js"></script>
 </body>
 </html>
