@@ -1,223 +1,240 @@
 	// 1. 初始化数据
 
-    var hashA = init()
+	var hashA = init()
 
-    var keys = hashA['keys']
+	var keys = hashA['keys']
 
-    var hash = hashA['hash']
+	var hash = hashA['hash']
 
-    
 
-    // 2. 生成键盘
 
-    // 遍历 keys，生成 kbd 标签
+	// 2. 生成键盘
 
-    generateKeyboard(keys, hash)
+	// 遍历 keys，生成 kbd 标签
 
-    
+	generateKeyboard(keys, hash)
 
-    // 3. 监听用户动作
 
-    listenToUser(hash)
 
-    
+	// 3. 监听用户动作
 
-    // 下面是工具函数
+	listenToUser(hash)
 
-    function getFromLocalStorage(name){
 
-        return JSON.parse(localStorage.getItem(name) || 'null')
 
-    }
+	// 下面是工具函数
 
+	function getFromLocalStorage(name) {
 
+	    return JSON.parse(localStorage.getItem(name) || 'null')
 
-    function tag(tagName){
+	}
 
-        return document.createElement(tagName) 
 
-    }
 
-    
+	function tag(tagName) {
 
-    function createSpan(textContent){
+	    return document.createElement(tagName)
 
-        var span = tag('span')
+	}
 
-        span.textContent = textContent
 
-        span.className = "text"
 
-        return span
+	function createSpan(textContent) {
 
-    }
+	    var span = tag('span')
 
-    function createButton(id){
+	    span.textContent = textContent
 
-        var button = tag('button')
+	    span.className = "text"
 
-        button.textContent = '编辑'
+	    return span
 
-        button.id = id
+	}
 
-        button.onclick = function(xzkjcnxlkcjlk){
+	function createButton(id) {
 
-            // xzkjcnxlkcjlk['target'] 就是用户点击的元素
+	    var button = tag('button')
 
-            var button2 = xzkjcnxlkcjlk['target']
+	    button.textContent = '编辑'
 
-            var img2 = button2.previousSibling
+	    button.id = id
 
-            var key = button2['id'] // q w e r t
+	    button.onclick = function(xzkjcnxlkcjlk) {
 
-            var x = prompt('给我一个网址') // qq.com
+	        // xzkjcnxlkcjlk['target'] 就是用户点击的元素
 
-            hash[key] = x  // hash 变更
+	        var button2 = xzkjcnxlkcjlk['target']
 
-            img2.src = 'http://'+x + '/favicon.ico'
+	        var img2 = button2.previousSibling
 
-            img2.onerror = function(xxx){
+	        var key = button2['id'] // q w e r t
 
-                xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+	        var x = prompt('给我一个网址') // qq.com
 
-            }
+	        hash[key] = x // hash 变更
 
-            localStorage.setItem('zzz', JSON.stringify(hash))
+	        img2.src = 'http://' + x + '/favicon.ico'
 
-        }
+	        img2.onerror = function(xxx) {
 
-        return button
+	            xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
 
-    }
+	        }
 
-    function createImage(domain){
+	        localStorage.setItem('zzz', JSON.stringify(hash))
 
-        var img = tag('img')
+	    }
 
-        if(domain){
+	    return button
 
-            img.src = 'http://'+ domain + '/favicon.ico'
+	}
 
-        }else{
+	function createImage(domain) {
 
-            img.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+	    var img = tag('img')
 
-        }
+	    if (domain) {
 
-        img.onerror = function(xxx){
+	        img.src = 'http://' + domain + '/favicon.ico'
 
-            xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+	    } else {
 
-        }
+	        img.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
 
-        return img
+	    }
 
-    }
+	    img.onerror = function(xxx) {
 
-    function init(){
+	        xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
 
-        var keys = {
+	    }
 
-            '0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+	    return img
 
-            '1': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+	}
 
-            '2': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+	function init() {
 
-            'length': 3
+	    var keys = {
 
-        }
+	        '0': { 0: 'q', 1: 'w', 2: 'e', 3: 'r', 4: 't', 5: 'y', 6: 'u', 7: 'i', 8: 'o', 9: 'p', length: 10 },
 
-        var hash = {'h': 'hao123.com','n': 'nba.com','a': 'alibaba.com','b': 'bilibili.com','v': 'v2ex.com','q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 'r': 'renren.com', 't': 'taobao.com', 'y': 'youtube.com', 'u': 'uc.com' , 'i': 'iqiyi.com', 'o': 'opera.com', 'p': undefined, 'a': 'acfun.tv', 's': 'sohu.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
+	        '1': { 0: 'a', 1: 's', 2: 'd', 3: 'f', 4: 'g', 5: 'h', 6: 'j', 7: 'k', 8: 'l', length: 9 },
 
-        }
+	        '2': { 0: 'z', 1: 'x', 2: 'c', 3: 'v', 4: 'b', 5: 'n', 6: 'm', length: 7 },
 
-        // 取出 localStorage 中的 zzz 对应的 hash
+	        'length': 3
 
-        var hashInLocalStorage = getFromLocalStorage('zzz') 
+	    }
 
-        if(hashInLocalStorage){
+	    var hash = {
+	        'h': 'hao123.com',
+	        'n': 'nba.com',
+	        'a': 'alibaba.com',
+	        'b': 'bilibili.com',
+	        'v': 'v2ex.com',
+	        'q': 'qq.com',
+	        'w': 'weibo.com',
+	        'e': 'ele.me',
+	        'r': 'renren.com',
+	        't': 'taobao.com',
+	        'y': 'youtube.com',
+	        'u': 'uc.com',
+	        'i': 'iqiyi.com',
+	        'o': 'opera.com',
+	        'p': undefined,
+	        'a': 'al',
+	        's': 'sohu.com',
+	        'z': 'zhihu.com',
+	        'm': 'www.mcdonalds.com.cn',
+	        'g': 'google'
+	    }
 
-            hash = hashInLocalStorage
+	    // 取出 localStorage 中的 zzz 对应的 hash
 
-        }
+	    var hashInLocalStorage = getFromLocalStorage('zzz')
 
-        return {
+	    if (hashInLocalStorage) {
 
-            "keys": keys,
+	        hash = hashInLocalStorage
 
-            "hash": hash
+	    }
 
-        }
+	    return {
 
-    }
+	        "keys": keys,
 
-    function generateKeyboard(keys, hash){
+	        "hash": hash
 
-        for(var index=0; index< keys['length']; index = index+1 ){
+	    }
 
-            var div = tag('div')
+	}
 
-            div.className = 'row'
+	function generateKeyboard(keys, hash) {
 
+	    for (var index = 0; index < keys['length']; index = index + 1) {
 
+	        var div = tag('div')
 
-            main.appendChild(div)
+	        div.className = 'row'
 
 
 
-        var row = keys[index]  // 第一个数组  第二个数组  第三个数组
+	        main.appendChild(div)
 
-        for(var index2 =0;index2< row['length']; index2 = index2 + 1){
 
-            var span = createSpan(row[index2])
 
+	        var row = keys[index] // 第一个数组  第二个数组  第三个数组
 
+	        for (var index2 = 0; index2 < row['length']; index2 = index2 + 1) {
 
-            var button = createButton(row[index2])
+	            var span = createSpan(row[index2])
 
 
 
-            var img = createImage(hash[row[index2]])
+	            var button = createButton(row[index2])
 
 
 
-            var kbd = tag('kbd')
+	            var img = createImage(hash[row[index2]])
 
-            kbd.className = 'key'
 
 
+	            var kbd = tag('kbd')
 
-            kbd.appendChild(span)
+	            kbd.className = 'key'
 
-            kbd.appendChild(img)
 
-            kbd.appendChild(button)
 
+	            kbd.appendChild(span)
 
+	            kbd.appendChild(img)
 
-            div.appendChild(kbd)
+	            kbd.appendChild(button)
 
-        }
 
-    }
 
-}	
+	            div.appendChild(kbd)
 
-function listenToUser(hash){
+	        }
 
-    document.onkeypress = function(xzkjcnxlkcjlk){
+	    }
 
-            var key = xzkjcnxlkcjlk['key'] // q w e
+	}
 
-            var website = hash[key]
+	function listenToUser(hash) {
 
-            //location.href = 'http://'+website
+	    document.onkeypress = function(xzkjcnxlkcjlk) {
 
-            window.open('http://'+website, '_blank')
+	        var key = xzkjcnxlkcjlk['key'] // q w e
 
-        }
+	        var website = hash[key]
 
-    }
+	        //location.href = 'http://'+website
 
+	        window.open('http://' + website, '_blank')
 
+	    }
+
+	}
